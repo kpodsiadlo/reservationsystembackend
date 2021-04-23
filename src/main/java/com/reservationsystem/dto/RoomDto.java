@@ -6,11 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class RoomDto {
 
     private Integer id;
+    private String description;
     private List<Reservation> reservations;
+
+
 }

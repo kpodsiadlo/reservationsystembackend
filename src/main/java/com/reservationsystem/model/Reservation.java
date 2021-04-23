@@ -22,11 +22,11 @@ public class Reservation {
     @Id
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name="room_id")
     private Room room;
     private LocalDateTime reservationStart;
     private LocalDateTime reservationEnd;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name="user_id")
     private User user;
 }

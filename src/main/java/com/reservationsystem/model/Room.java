@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -18,6 +19,7 @@ public class Room {
     @GeneratedValue
     @Id
     private Integer id;
-    @OneToMany
+    private String description;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "room")
     private List<Reservation> reservations;
 }

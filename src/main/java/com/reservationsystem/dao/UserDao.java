@@ -1,6 +1,7 @@
 package com.reservationsystem.dao;
 
 import com.reservationsystem.model.User;
+import org.hibernate.Session;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -11,13 +12,15 @@ public class UserDao {
     @PersistenceContext
     EntityManager entityManager;
 
+
     public User create (User user) {
         entityManager.persist(user);
         return user;
     }
 
     public User read(Integer id) {
-        return entityManager.find(User.class, id);
+        User user = entityManager.find(User.class, id);
+        return user;
     }
 
     public User update (User user, Integer id) {

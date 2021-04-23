@@ -4,10 +4,12 @@ import com.reservationsystem.dao.ReservationDao;
 import com.reservationsystem.dto.ReservationDto;
 import com.reservationsystem.mapper.ReservationMapper;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequestScoped
 public class ReservationService {
     @Inject
     ReservationDao reservationDao;

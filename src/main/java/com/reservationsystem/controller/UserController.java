@@ -1,11 +1,12 @@
 package com.reservationsystem.controller;
 
 import com.reservationsystem.dto.UserDto;
-import com.reservationsystem.model.Reservation;
-import com.reservationsystem.model.UserRole;
+import com.reservationsystem.model.User;
 import com.reservationsystem.service.UserService;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,8 +16,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
 
+
+@Transactional
+@RequestScoped
 @Path("/user")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -27,20 +30,18 @@ public class UserController {
 
     @POST
     public UserDto createUser(UserDto userDto) {
-        return(userService.createUser(userDto));
+        return (userService.createUser(userDto));
     }
 
     @GET
     @Path("/{id}")
     public UserDto readUser(@PathParam("id") Integer id) {
-        return new UserDto(2, "asd", "fds",
-                UserRole.USER, new ArrayList<Reservation>());
-        //return(userService.readUser(id));
+        return (userService.readUser(id));
     }
 
     @PUT
     public UserDto updateUser(UserDto userDto, Integer id) {
-        return(userService.updateUser(userDto, id));
+        return (userService.updateUser(userDto, id));
     }
 
     @DELETE

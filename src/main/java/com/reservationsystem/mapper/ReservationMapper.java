@@ -3,7 +3,7 @@ package com.reservationsystem.mapper;
 import com.reservationsystem.dto.ReservationDto;
 import com.reservationsystem.model.Reservation;
 
-public final class ReservationMapper {
+public class ReservationMapper {
     public static Reservation toReservation(ReservationDto reservationDto) {
         return new Reservation(
                 reservationDto.getId(),

@@ -22,6 +22,6 @@ public class User {
     private String firstName;
     private String surname;
     private UserRole role;
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Reservation> reservations;
 }

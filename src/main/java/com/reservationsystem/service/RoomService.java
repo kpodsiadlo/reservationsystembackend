@@ -4,10 +4,12 @@ import com.reservationsystem.dao.RoomDao;
 import com.reservationsystem.dto.RoomDto;
 import com.reservationsystem.mapper.RoomMapper;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequestScoped
 public class RoomService {
     @Inject
     RoomDao roomDao;
