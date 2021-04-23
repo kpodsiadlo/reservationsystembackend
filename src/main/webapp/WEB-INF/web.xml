@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Deployment descriptor -->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!-- in theory, servlet can be register here. @Servlet annotation does it automatically -->
+    <display-name>Reservation System Backend</display-name>
+    <!-- data sources can be registered here -->
+    <data-source>
+
+        <name>java:app/jdbc/reservationsystemds</name>
+        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+        <url>jdbc:mysql://0.0.0.0:3308/reservationsystemdb?useLegacyDatetimeCode=false&amp;
+            serverTimezone=Europe/Warsaw</url>
+        <user>root</user>
+        <password>toor</password>
+    </data-source>
+</web-app>
