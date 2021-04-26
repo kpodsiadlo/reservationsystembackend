@@ -1,7 +1,7 @@
 package com.reservationsystem.dao;
 
-import com.reservationsystem.model.User;
-import com.reservationsystem.model.UserRole;
+import com.reservationsystem.entity.User;
+import com.reservationsystem.entity.UserRole;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

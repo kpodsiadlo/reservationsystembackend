@@ -9,7 +9,6 @@
     <display-name>Reservation System Backend</display-name>
     <!-- data sources can be registered here -->
     <data-source>
-
         <name>java:app/jdbc/reservationsystemds</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
         <url>jdbc:mysql://0.0.0.0:3308/reservationsystemdb?useLegacyDatetimeCode=false&amp;

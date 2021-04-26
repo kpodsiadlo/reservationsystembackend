@@ -1,7 +1,7 @@
 package com.reservationsystem.mapper;
 
 import com.reservationsystem.dto.RoomDto;
-import com.reservationsystem.model.Room;
+import com.reservationsystem.entity.Room;
 
 import javax.ejb.Stateless;
 

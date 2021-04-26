@@ -1,4 +1,4 @@
-package com.reservationsystem.model;
+package com.reservationsystem.entity;
 
 public enum UserRole {
     USER,

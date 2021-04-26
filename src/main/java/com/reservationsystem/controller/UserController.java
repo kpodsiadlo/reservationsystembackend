@@ -1,7 +1,8 @@
 package com.reservationsystem.controller;
 
+import com.reservationsystem.dao.UserDao;
 import com.reservationsystem.dto.UserDto;
-import com.reservationsystem.model.User;
+import com.reservationsystem.entity.User;
 import com.reservationsystem.service.UserService;
 
 import javax.enterprise.context.RequestScoped;
@@ -17,7 +18,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
 @Transactional
 @RequestScoped
 @Path("/user")
@@ -26,6 +26,7 @@ import javax.ws.rs.core.MediaType;
 public class UserController {
 
     @Inject
+    UserDao userDao;
     UserService userService;
 
     @POST
@@ -35,8 +36,8 @@ public class UserController {
 
     @GET
     @Path("/{id}")
-    public UserDto readUser(@PathParam("id") Integer id) {
-        return (userService.readUser(id));
+    public User readUser(@PathParam("id") Integer id) {
+        return (userDao.read(id));
     }
 
     @PUT

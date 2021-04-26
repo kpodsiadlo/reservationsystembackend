@@ -1,7 +1,7 @@
 package com.reservationsystem.dto;
 
-import com.reservationsystem.model.Room;
-import com.reservationsystem.model.User;
+import com.reservationsystem.entity.Room;
+import com.reservationsystem.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

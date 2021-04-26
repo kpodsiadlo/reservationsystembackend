@@ -1,7 +1,7 @@
 package com.reservationsystem.mapper;
 
 import com.reservationsystem.dto.UserDto;
-import com.reservationsystem.model.User;
+import com.reservationsystem.entity.User;
 
 import javax.ejb.Stateless;
 

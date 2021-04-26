@@ -1,7 +1,7 @@
 package com.reservationsystem.mapper;
 
 import com.reservationsystem.dto.ReservationDto;
-import com.reservationsystem.model.Reservation;
+import com.reservationsystem.entity.Reservation;
 
 public class ReservationMapper {
     public static Reservation toReservation(ReservationDto reservationDto) {

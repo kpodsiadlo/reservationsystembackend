@@ -2,8 +2,8 @@ package com.reservationsystem.service;
 
 import com.reservationsystem.dao.UserDao;
 import com.reservationsystem.dto.UserDto;
+import com.reservationsystem.entity.User;
 import com.reservationsystem.mapper.UserMapper;
-import com.reservationsystem.model.User;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -25,16 +25,10 @@ public class UserService {
                 userDao.create(userMapper.toUser(userDto)));
     }
     @Transactional
-    public UserDto readUser(Integer id) {
-        return userMapper.toUserDto(
-                userDao.read(id));
+    public User readUser(Integer id) {
+        return userDao.read(id);
 
     }
-//    @Transactional
-//    public User readUser(Integer id) {
-//
-//        return userDao.read(id);
-//    }
     @Transactional
     public UserDto updateUser(UserDto userDto, Integer id) {
         return userMapper.toUserDto(

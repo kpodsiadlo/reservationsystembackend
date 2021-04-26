@@ -1,6 +1,6 @@
 package com.reservationsystem.dao;
 
-import com.reservationsystem.model.Room;
+import com.reservationsystem.entity.Room;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
