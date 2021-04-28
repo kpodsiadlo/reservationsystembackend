@@ -1,6 +1,7 @@
 package com.reservationsystem.controller;
 
 import com.reservationsystem.dao.UserDao;
+import com.reservationsystem.dto.FullUserDto;
 import com.reservationsystem.dto.UserDto;
 import com.reservationsystem.entity.User;
 import com.reservationsystem.service.UserService;
@@ -38,6 +39,12 @@ public class UserController {
     @Path("/{id}")
     public User readUser(@PathParam("id") Integer id) {
         return (userDao.read(id));
+    }
+
+    @GET
+    @Path("full/{id}")
+    public FullUserDto readFullUser(@PathParam("id") Integer id) {
+        return (userDao.readFullUser(id));
     }
 
     @PUT

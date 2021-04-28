@@ -16,5 +16,4 @@ public class RoomDto {
     private String description;
     private List<Reservation> reservations;
 
-
 }
