@@ -1,7 +1,7 @@
 package com.reservationsystem.controller;
 
 import com.reservationsystem.dao.UserDao;
-import com.reservationsystem.dto.FullUserDto;
+import com.reservationsystem.dto.UserWithReservationsDto;
 import com.reservationsystem.dto.UserDto;
 import com.reservationsystem.entity.User;
 import com.reservationsystem.service.UserService;
@@ -27,7 +27,6 @@ import javax.ws.rs.core.MediaType;
 public class UserController {
 
     @Inject
-    UserDao userDao;
     UserService userService;
 
     @POST
@@ -38,13 +37,13 @@ public class UserController {
     @GET
     @Path("/{id}")
     public User readUser(@PathParam("id") Integer id) {
-        return (userDao.read(id));
+        return (userService.readUser(id));
     }
 
     @GET
-    @Path("full/{id}")
-    public FullUserDto readFullUser(@PathParam("id") Integer id) {
-        return (userDao.readFullUser(id));
+    @Path("withreservations/{id}")
+    public UserWithReservationsDto readUserWithReservations(@PathParam("id") Integer id) {
+        return (userService.readUserWithReservations(id));
     }
 
     @PUT

@@ -5,8 +5,8 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class FullUserRoomDto {
-    public FullUserRoomDto() {
+public class ReservationRoomDto {
+    public ReservationRoomDto() {
     }
     private Integer id;
     private String description;

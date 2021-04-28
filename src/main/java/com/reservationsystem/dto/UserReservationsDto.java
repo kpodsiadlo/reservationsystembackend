@@ -7,12 +7,12 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Data
-public class FullUserReservationDto {
-    public FullUserReservationDto() {
+public class UserReservationsDto {
+    public UserReservationsDto() {
     }
 
     private Integer id;
     private LocalDateTime reservationStart;
     private LocalDateTime reservationEnd;
-    private FullUserRoomDto fullUserRoomDto;
+    private ReservationRoomDto fullUserRoomDto;
 }

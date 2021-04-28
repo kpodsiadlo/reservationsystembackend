@@ -1,8 +1,6 @@
 package com.reservationsystem.dao;
 
-import com.reservationsystem.dto.FullUserDto;
-import com.reservationsystem.entity.Reservation;
-import com.reservationsystem.entity.Room;
+import com.reservationsystem.dto.UserWithReservationsDto;
 import com.reservationsystem.entity.User;
 import com.reservationsystem.mapper.UserMapper;
 
@@ -23,18 +21,6 @@ public class UserDao {
         return user;
     }
 
-//    public FullUserDto getFullUser(Integer id){
-//        FullUserDto fullUser = new FullUserDto();
-//        User user = entityManager.find(User.class, 1);
-//        Query query = entityManager.createQuery(
-//                "From Reservation r where r.user.id = ?1",
-//                Reservation.class)
-//                .setParameter(1, id);
-//        List<Reservation> reservationList = query.getResultList();
-////        for (Reservation reservation : reservationList) {
-////            entityManager.createQuery()
-//        return fullUser;
-//    }
 
 //    public User read(Integer id) {
 //        User user = entityManager.find(User.class, 1);
@@ -66,17 +52,8 @@ public class UserDao {
 //        return (User) singleResult;
 //    }
 
-//    public FullUserDto readFullUser(Integer id) {
-//        Query query = entityManager.createQuery("from User user " +
-//                "left join user.reservations reservations " +
-//                "left join reservations.room room " +
-//                "where user.id = :id")
-//                .setParameter("id", id);
-//        List resultList = query.getResultList();
-//        return new FullUserDto();
-//    }
 
-    public FullUserDto readFullUser(Integer id) {
+    public UserWithReservationsDto readUserWithReservations(Integer id) {
         Query query = entityManager.createQuery("from User user " +
                 "join fetch user.reservations reservations " +
 //                "join fetch reservations.room room " +
@@ -84,8 +61,8 @@ public class UserDao {
                 .setParameter("id", id);
         List resultList = query.getResultList();
         User retrievedUser = (User) resultList.get(0);
-        FullUserDto fullUserDto = UserMapper.toFullUserDto(retrievedUser);
-        return fullUserDto;
+        UserWithReservationsDto userWithReservationsDto = UserMapper.toFullUserDto(retrievedUser);
+        return userWithReservationsDto;
     }
 
 //    public User read(Integer id) {

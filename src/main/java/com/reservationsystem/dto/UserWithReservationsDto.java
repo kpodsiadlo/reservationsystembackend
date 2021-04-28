@@ -7,13 +7,13 @@ import lombok.Data;
 import java.util.List;
 @AllArgsConstructor
 @Data
-public class FullUserDto {
-    public FullUserDto() {
+public class UserWithReservationsDto {
+    public UserWithReservationsDto() {
     }
     private Integer id;
     private String firstName;
     private String surname;
     private UserRole role;
-    private List<FullUserReservationDto> reservations;
+    private List<UserReservationsDto> reservations;
 
 }
