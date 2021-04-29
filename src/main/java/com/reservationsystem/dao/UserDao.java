@@ -84,7 +84,7 @@ public class UserDao {
     public User update(User user, Integer id) {
         User userToChange = entityManager.find(User.class, id);
         userToChange.setFirstName(user.getFirstName());
-        userToChange.setSurname(user.getSurname());
+        userToChange.setLastName(user.getLastName());
         userToChange.setRole(user.getRole());
         userToChange.setReservations(userToChange.getReservations());
         return userToChange;

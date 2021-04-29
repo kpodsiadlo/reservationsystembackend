@@ -22,7 +22,7 @@ public class User {
     @GeneratedValue
     private Integer id;
     private String firstName;
-    private String surname;
+    private String lastName;
     private UserRole role;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Reservation> reservations;

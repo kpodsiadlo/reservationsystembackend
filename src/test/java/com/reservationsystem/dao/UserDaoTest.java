@@ -13,7 +13,7 @@ class UserDaoTest {
     void create() {
         User user = new User();
         user.setFirstName("asd");
-        user.setSurname("sdf");
+        user.setLastName("sdf");
         user.setRole(UserRole.USER);
         User user1 = userDao.create(user);
         assertEquals(user.getFirstName(), user1.getFirstName());

@@ -14,5 +14,5 @@ public class UserReservationsDto {
     private Integer id;
     private LocalDateTime reservationStart;
     private LocalDateTime reservationEnd;
-    private ReservationRoomDto fullUserRoomDto;
+    private ReservationRoomDto room;
 }

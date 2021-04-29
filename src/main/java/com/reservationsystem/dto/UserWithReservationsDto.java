@@ -11,8 +11,7 @@ public class UserWithReservationsDto {
     public UserWithReservationsDto() {
     }
     private Integer id;
-    private String firstName;
-    private String surname;
+    private String name;
     private UserRole role;
     private List<UserReservationsDto> reservations;
 

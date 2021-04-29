@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDto {
     private Integer id;
     private String firstName;
-    private String surname;
+    private String lastName;
     private UserRole role;
     private List<Reservation> reservations;
 }

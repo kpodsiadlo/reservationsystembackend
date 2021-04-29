@@ -21,7 +21,7 @@ public class UserMapper {
     public static User toUser(UserDto userDto) {
         return new User(userDto.getId(),
                 userDto.getFirstName(),
-                userDto.getSurname(),
+                userDto.getLastName(),
                 userDto.getRole(),
                 userDto.getReservations());
     }
@@ -29,7 +29,7 @@ public class UserMapper {
     public static UserDto toUserDto(User user) {
         return new UserDto(user.getId(),
                 user.getFirstName(),
-                user.getSurname(),
+                user.getLastName(),
                 user.getRole(),
                 user.getReservations());
     }
@@ -37,8 +37,7 @@ public class UserMapper {
     public static UserWithReservationsDto toFullUserDto(User user) {
         UserWithReservationsDto userWithReservationsDto = new UserWithReservationsDto();
         userWithReservationsDto.setId(user.getId());
-        userWithReservationsDto.setFirstName(user.getFirstName());
-        userWithReservationsDto.setSurname(user.getSurname());
+        userWithReservationsDto.setName(user.getFirstName() + " " + user.getLastName());
         userWithReservationsDto.setRole(user.getRole());
         List<UserReservationsDto> userReservationsDtoList =
                 new ArrayList<>();
@@ -49,7 +48,7 @@ public class UserMapper {
             userReservationsDto.setId(reservation.getId());
             userReservationsDto.setReservationStart(reservation.getReservationStart());
             userReservationsDto.setReservationEnd(reservation.getReservationEnd());
-            userReservationsDto.setFullUserRoomDto(toReservationRoomDto(reservation.getRoom()));
+            userReservationsDto.setRoom(toReservationRoomDto(reservation.getRoom()));
             userReservationsDtoList.add(userReservationsDto);
         }
         return userWithReservationsDto;
