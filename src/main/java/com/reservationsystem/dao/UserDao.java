@@ -1,6 +1,5 @@
 package com.reservationsystem.dao;
 
-import com.reservationsystem.dto.UserDto;
 import com.reservationsystem.dto.UserWithReservationsDto;
 import com.reservationsystem.entity.User;
 import com.reservationsystem.mapper.UserMapper;
@@ -30,7 +29,7 @@ public class UserDao {
                 .setParameter("id", id);
         List resultList = query.getResultList();
         User retrievedUser = (User) resultList.get(0);
-        UserWithReservationsDto userWithReservationsDto = UserMapper.toFullUserDto(retrievedUser);
+        UserWithReservationsDto userWithReservationsDto = UserMapper.toUserWithReservationsDto(retrievedUser);
         return userWithReservationsDto;
     }
 

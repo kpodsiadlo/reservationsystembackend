@@ -50,6 +50,6 @@ public class ReservationController {
     @DELETE
     @Path("/{id}")
     public Boolean deleteReservation(@PathParam("id") Integer id) {
-        return (reservationService.deleteReservation( id));
+        return (reservationService.deleteReservation(id));
     }
 }

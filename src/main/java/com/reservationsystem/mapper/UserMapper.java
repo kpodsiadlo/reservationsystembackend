@@ -27,7 +27,7 @@ public class UserMapper {
         );
     }
 
-    public static UserWithReservationsDto toFullUserDto(User user) {
+    public static UserWithReservationsDto toUserWithReservationsDto(User user) {
         UserWithReservationsDto userWithReservationsDto = new UserWithReservationsDto();
         userWithReservationsDto.setId(user.getId());
         userWithReservationsDto.setName(user.getFirstName() + " " + user.getLastName());
