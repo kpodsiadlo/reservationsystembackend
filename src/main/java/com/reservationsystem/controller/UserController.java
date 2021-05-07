@@ -1,8 +1,7 @@
 package com.reservationsystem.controller;
 
-import com.reservationsystem.dao.UserDao;
-import com.reservationsystem.dto.UserWithReservationsDto;
 import com.reservationsystem.dto.UserDto;
+import com.reservationsystem.dto.UserWithReservationsDto;
 import com.reservationsystem.entity.User;
 import com.reservationsystem.service.UserService;
 

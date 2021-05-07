@@ -34,7 +34,7 @@ public class ReservationService {
 
     }
 
-    public Boolean delete(ReservationDto reservationDto, Integer id) {
+    public Boolean deleteReservation(ReservationDto reservationDto, Integer id) {
         return reservationDao.delete(
                 ReservationMapper.toReservation(
                         reservationDto), id);

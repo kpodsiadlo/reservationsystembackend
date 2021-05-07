@@ -2,6 +2,7 @@ package com.reservationsystem.service;
 
 import com.reservationsystem.dao.RoomDao;
 import com.reservationsystem.dto.RoomDto;
+import com.reservationsystem.dto.RoomWithReservationsDto;
 import com.reservationsystem.mapper.RoomMapper;
 
 import javax.enterprise.context.RequestScoped;
@@ -26,6 +27,10 @@ public class RoomService {
 
     }
 
+    public RoomWithReservationsDto readRoomWithReservations(Integer id) {
+        return RoomMapper.toRoomWithReservationsDto(roomDao.readRoomWithReservations(id));
+    }
+
     public RoomDto updateRoom(RoomDto roomDto, Integer id) {
         return RoomMapper.toRoomDto(
                 roomDao.update(
@@ -34,7 +39,7 @@ public class RoomService {
 
     }
 
-    public Boolean delete(RoomDto roomDto, Integer id) {
+    public Boolean deleteRoom(RoomDto roomDto, Integer id) {
         return roomDao.delete(
                 RoomMapper.toRoom(
                         roomDto), id);
