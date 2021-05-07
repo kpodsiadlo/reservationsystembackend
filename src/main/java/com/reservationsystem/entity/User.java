@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,6 +25,7 @@ public class User {
     private Integer id;
     private String firstName;
     private String lastName;
+    @Enumerated(EnumType.STRING)
     private UserRole role;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Reservation> reservations;

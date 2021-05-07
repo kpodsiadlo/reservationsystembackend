@@ -21,6 +21,7 @@ public class Room {
     @GeneratedValue
     @Id
     private Integer id;
+    private String roomNumber;
     private String description;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "room")
     private List<Reservation> reservations;
