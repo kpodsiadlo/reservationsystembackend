@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class RoomReservationUserDto {
+public class ReservationUserDto {
     private Integer id;
     private String firstName;
     private String lastName;

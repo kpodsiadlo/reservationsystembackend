@@ -1,6 +1,10 @@
 package com.reservationsystem.controller;
 
+import com.reservationsystem.dto.IncomingReservationDto;
 import com.reservationsystem.dto.ReservationDto;
+import com.reservationsystem.dto.ReservationWithRoomDto;
+import com.reservationsystem.entity.Reservation;
+import com.reservationsystem.mapper.ReservationMapper;
 import com.reservationsystem.service.ReservationService;
 
 import javax.enterprise.context.RequestScoped;
@@ -26,24 +30,24 @@ public class ReservationController {
     @Inject
     ReservationService reservationService;
 
-    @POST
-    public ReservationDto createReservation(ReservationDto reservationDto) {
-        return (reservationService.createReservation(reservationDto));
-    }
-
     @GET
     @Path("/{id}")
     public ReservationDto readReservation(@PathParam("id") Integer id) {
         return (reservationService.readReservation(id));
     }
 
+    @POST
+    public ReservationWithRoomDto createReservation(IncomingReservationDto incomingReservationDto) {
+        return (reservationService.createReservation(incomingReservationDto));
+    }
+
     @PUT
-    public ReservationDto updateReservation(ReservationDto reservationDto, Integer id) {
-        return (reservationService.updateReservation(reservationDto, id));
+    public Reservation updateReservation(Reservation reservation, Integer id) {
+        return (reservationService.updateReservation(reservation, id));
     }
 
     @DELETE
-    public Boolean deleteReservation(ReservationDto reservationDto, Integer id) {
-        return (reservationService.deleteReservation(reservationDto, id));
+    public Boolean deleteReservation(Reservation reservation, Integer id) {
+        return (reservationService.deleteReservation(reservation, id));
     }
 }

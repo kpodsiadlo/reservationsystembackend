@@ -3,6 +3,7 @@ package com.reservationsystem.service;
 import com.reservationsystem.dao.RoomDao;
 import com.reservationsystem.dto.RoomDto;
 import com.reservationsystem.dto.RoomWithReservationsDto;
+import com.reservationsystem.entity.Room;
 import com.reservationsystem.mapper.RoomMapper;
 
 import javax.enterprise.context.RequestScoped;
@@ -15,10 +16,8 @@ public class RoomService {
     @Inject
     RoomDao roomDao;
 
-    public RoomDto createRoom(RoomDto roomDto) {
-        return RoomMapper.toRoomDto(
-                roomDao.create(
-                        RoomMapper.toRoom(roomDto)));
+    public Room createRoom(Room room) {
+        return roomDao.create(room);
     }
 
     public RoomDto readRoom(Integer id) {
@@ -31,25 +30,20 @@ public class RoomService {
         return RoomMapper.toRoomWithReservationsDto(roomDao.readRoomWithReservations(id));
     }
 
-    public RoomDto updateRoom(RoomDto roomDto, Integer id) {
-        return RoomMapper.toRoomDto(
-                roomDao.update(
-                        RoomMapper.toRoom(
-                                roomDto), id));
-
-    }
-
-    public Boolean deleteRoom(RoomDto roomDto, Integer id) {
-        return roomDao.delete(
-                RoomMapper.toRoom(
-                        roomDto), id);
-
-    }
-
     public List<RoomDto> getAll() {
         return roomDao.findAll()
                 .stream()
                 .map(RoomMapper::toRoomDto)
                 .collect(Collectors.toList());
+    }
+
+    public Room updateRoom(Room room, Integer id) {
+        return roomDao.update(room,id);
+
+    }
+
+    public Boolean deleteRoom(Room room, Integer id) {
+        return roomDao.delete(room,id);
+
     }
 }

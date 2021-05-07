@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter
@@ -27,7 +28,9 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name="room_id")
     private Room room;
+    @NotNull
     private LocalDateTime reservationStart;
+    @NotNull
     private LocalDateTime reservationEnd;
     @ManyToOne
     @JoinColumn(name="user_id")

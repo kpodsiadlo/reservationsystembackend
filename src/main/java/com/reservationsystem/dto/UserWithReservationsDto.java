@@ -13,6 +13,6 @@ public class UserWithReservationsDto {
     private Integer id;
     private String name;
     private UserRole role;
-    private List<UserReservationsDto> reservations;
+    private List<ReservationWithRoomDto> reservations;
 
 }

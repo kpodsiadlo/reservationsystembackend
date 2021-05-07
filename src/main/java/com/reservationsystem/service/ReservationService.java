@@ -1,7 +1,14 @@
 package com.reservationsystem.service;
 
 import com.reservationsystem.dao.ReservationDao;
+import com.reservationsystem.dao.RoomDao;
+import com.reservationsystem.dao.UserDao;
+import com.reservationsystem.dto.IncomingReservationDto;
 import com.reservationsystem.dto.ReservationDto;
+import com.reservationsystem.dto.ReservationWithRoomDto;
+import com.reservationsystem.entity.Reservation;
+import com.reservationsystem.entity.Room;
+import com.reservationsystem.entity.User;
 import com.reservationsystem.mapper.ReservationMapper;
 
 import javax.enterprise.context.RequestScoped;
@@ -13,11 +20,17 @@ import java.util.stream.Collectors;
 public class ReservationService {
     @Inject
     ReservationDao reservationDao;
+    @Inject
+    UserDao userDao;
+    @Inject
+    RoomDao roomDao;
 
-    public ReservationDto createReservation(ReservationDto reservationDto) {
-        return ReservationMapper.toReservationDto(
-                reservationDao.create(
-                        ReservationMapper.toReservation(reservationDto)));
+    public ReservationWithRoomDto createReservation(IncomingReservationDto incomingReservationDto) {
+        User user = userDao.readEntity(incomingReservationDto.getUserId());
+        Room room = roomDao.read(incomingReservationDto.getRoomId());
+        Reservation reservation = ReservationMapper.toReservation(
+                incomingReservationDto, user, room);
+        return ReservationMapper.toReservationWithRoomDto(reservationDao.create(reservation));
     }
 
     public ReservationDto readReservation(Integer id) {
@@ -26,18 +39,13 @@ public class ReservationService {
 
     }
 
-    public ReservationDto updateReservation(ReservationDto reservationDto, Integer id) {
-        return ReservationMapper.toReservationDto(
-                reservationDao.update(
-                        ReservationMapper.toReservation(
-                                reservationDto), id));
+    public Reservation updateReservation(Reservation reservation, Integer id) {
+        return (reservationDao.update(reservation, id));
 
     }
 
-    public Boolean deleteReservation(ReservationDto reservationDto, Integer id) {
-        return reservationDao.delete(
-                ReservationMapper.toReservation(
-                        reservationDto), id);
+    public Boolean deleteReservation(Reservation reservation, Integer id) {
+        return reservationDao.delete(reservation, id);
 
     }
 

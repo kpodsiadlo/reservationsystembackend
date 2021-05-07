@@ -1,8 +1,9 @@
 package com.reservationsystem.mapper;
 
+import com.reservationsystem.dto.ReservationUserDto;
+import com.reservationsystem.dto.ReservationWithRoomDto;
 import com.reservationsystem.dto.RoomDto;
 import com.reservationsystem.dto.RoomReservationDto;
-import com.reservationsystem.dto.RoomReservationUserDto;
 import com.reservationsystem.dto.RoomWithReservationsDto;
 import com.reservationsystem.entity.Reservation;
 import com.reservationsystem.entity.Room;
@@ -14,14 +15,9 @@ import java.util.List;
 
 @Stateless
 public class RoomMapper {
-    public static Room toRoom(RoomDto roomDto) {
-        return new Room(roomDto.getId(), roomDto.getRoomNumber(), roomDto.getDescription(),
-                roomDto.getReservations());
-    }
 
     public static RoomDto toRoomDto(Room room) {
-        return new RoomDto(room.getId(), room.getRoomNumber(), room.getDescription(),
-                room.getReservations());
+        return new RoomDto(room.getId(), room.getRoomNumber(), room.getDescription());
     }
 
     public static RoomWithReservationsDto toRoomWithReservationsDto(Room room) {
@@ -45,11 +41,13 @@ public class RoomMapper {
         return roomWithReservationsDto;
     }
 
-    public static RoomReservationUserDto toRoomReservationUserDto(User user) {
-        RoomReservationUserDto roomReservationUserDto = new RoomReservationUserDto();
-        roomReservationUserDto.setId(user.getId());
-        roomReservationUserDto.setFirstName(user.getFirstName());
-        roomReservationUserDto.setLastName(user.getLastName());
-        return roomReservationUserDto;
+
+
+    public static ReservationUserDto toRoomReservationUserDto(User user) {
+        ReservationUserDto reservationUserDto = new ReservationUserDto();
+        reservationUserDto.setId(user.getId());
+        reservationUserDto.setFirstName(user.getFirstName());
+        reservationUserDto.setLastName(user.getLastName());
+        return reservationUserDto;
     }
 }

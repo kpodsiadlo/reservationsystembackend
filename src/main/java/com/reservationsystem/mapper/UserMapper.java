@@ -1,8 +1,8 @@
 package com.reservationsystem.mapper;
 
+import com.reservationsystem.dto.RoomDto;
 import com.reservationsystem.dto.UserWithReservationsDto;
-import com.reservationsystem.dto.UserReservationsDto;
-import com.reservationsystem.dto.ReservationRoomDto;
+import com.reservationsystem.dto.ReservationWithRoomDto;
 import com.reservationsystem.dto.UserDto;
 import com.reservationsystem.entity.Reservation;
 import com.reservationsystem.entity.Room;
@@ -18,20 +18,13 @@ public class UserMapper {
     public UserMapper() {
     }
 
-    public static User toUser(UserDto userDto) {
-        return new User(userDto.getId(),
-                userDto.getFirstName(),
-                userDto.getLastName(),
-                userDto.getRole(),
-                userDto.getReservations());
-    }
 
     public static UserDto toUserDto(User user) {
         return new UserDto(user.getId(),
                 user.getFirstName(),
                 user.getLastName(),
-                user.getRole(),
-                user.getReservations());
+                user.getRole()
+        );
     }
 
     public static UserWithReservationsDto toFullUserDto(User user) {
@@ -39,27 +32,25 @@ public class UserMapper {
         userWithReservationsDto.setId(user.getId());
         userWithReservationsDto.setName(user.getFirstName() + " " + user.getLastName());
         userWithReservationsDto.setRole(user.getRole());
-        List<UserReservationsDto> userReservationsDtoList =
+        List<ReservationWithRoomDto> reservationWithRoomDtoList =
                 new ArrayList<>();
-        userWithReservationsDto.setReservations(userReservationsDtoList);
+        userWithReservationsDto.setReservations(reservationWithRoomDtoList);
 
         for (Reservation reservation : user.getReservations()) {
-            UserReservationsDto userReservationsDto = new UserReservationsDto();
-            userReservationsDto.setId(reservation.getId());
-            userReservationsDto.setReservationStart(reservation.getReservationStart());
-            userReservationsDto.setReservationEnd(reservation.getReservationEnd());
-            userReservationsDto.setRoom(toReservationRoomDto(reservation.getRoom()));
-            userReservationsDtoList.add(userReservationsDto);
+            ReservationWithRoomDto reservationWithRoomDto =
+                    ReservationMapper.toReservationWithRoomDto(reservation);
+            reservationWithRoomDtoList.add(reservationWithRoomDto);
         }
         return userWithReservationsDto;
     }
 
 
-    private static ReservationRoomDto toReservationRoomDto(Room room) {
-        ReservationRoomDto reservationRoomDto = new ReservationRoomDto();
-        reservationRoomDto.setId(room.getId());
-        reservationRoomDto.setDescription(room.getDescription());
-        return reservationRoomDto;
+
+    private static RoomDto toRoomDto(Room room) {
+        RoomDto roomDto = new RoomDto();
+        roomDto.setId(room.getId());
+        roomDto.setDescription(room.getDescription());
+        return roomDto;
     }
 
 }

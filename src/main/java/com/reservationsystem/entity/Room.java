@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -21,7 +22,9 @@ public class Room {
     @GeneratedValue
     @Id
     private Integer id;
+    @NotNull
     private String roomNumber;
+    @NotNull
     private String description;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "room")
     private List<Reservation> reservations;

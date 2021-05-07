@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -23,8 +24,11 @@ public class User {
     @Id
     @GeneratedValue
     private Integer id;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private UserRole role;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")

@@ -1,8 +1,8 @@
 package com.reservationsystem.service;
 
 import com.reservationsystem.dao.UserDao;
-import com.reservationsystem.dto.UserWithReservationsDto;
 import com.reservationsystem.dto.UserDto;
+import com.reservationsystem.dto.UserWithReservationsDto;
 import com.reservationsystem.entity.User;
 import com.reservationsystem.mapper.UserMapper;
 
@@ -19,27 +19,28 @@ public class UserService {
     UserDao userDao;
 
     @Transactional
-    public UserDto createUser(UserDto userDto) {
-        return UserMapper.toUserDto(
-                userDao.create(UserMapper.toUser(userDto)));
+    public User createUser(User user) {
+        return userDao.create(user);
     }
+
     @Transactional
-    public User readUser(Integer id) {
+    public UserDto readUser(Integer id) {
         return userDao.read(id);
 
     }
+
     @Transactional
-    public UserDto updateUser(UserDto userDto, Integer id) {
-        return UserMapper.toUserDto(
-                userDao.update(UserMapper.toUser(userDto), id));
+    public User updateUser(User user, Integer id) {
+        return userDao.update(user, id);
 
     }
+
     @Transactional
-    public Boolean deleteUser(UserDto userDto, Integer id) {
-        return userDao.delete(
-                UserMapper.toUser(userDto), id);
+    public Boolean deleteUser(User user, Integer id) {
+        return userDao.delete(user, id);
 
     }
+
     @Transactional
     public List<UserDto> getAll() {
         return userDao.findAll()

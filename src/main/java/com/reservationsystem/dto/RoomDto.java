@@ -15,6 +15,4 @@ public class RoomDto {
     private Integer id;
     private String roomNumber;
     private String description;
-    private List<Reservation> reservations;
-
 }

@@ -15,5 +15,4 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private UserRole role;
-    private List<Reservation> reservations;
 }

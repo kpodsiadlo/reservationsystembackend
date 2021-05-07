@@ -1,5 +1,6 @@
 package com.reservationsystem.controller;
 
+import com.reservationsystem.entity.Room;
 import com.reservationsystem.dto.RoomDto;
 import com.reservationsystem.dto.RoomWithReservationsDto;
 import com.reservationsystem.service.RoomService;
@@ -28,11 +29,6 @@ public class RoomController {
     @Inject
     RoomService roomService;
 
-    @POST
-    public RoomDto createRoom(RoomDto roomDto) {
-        return (roomService.createRoom(roomDto));
-    }
-
     @GET
     @Path("/{id}")
     public RoomDto readRoom(@PathParam("id") Integer id) {
@@ -50,13 +46,18 @@ public class RoomController {
         return roomService.getAll();
     }
 
+    @POST
+    public Room createRoom(Room room) {
+        return (roomService.createRoom(room));
+    }
+
     @PUT
-    public RoomDto updateRoom(RoomDto roomDto, Integer id) {
-        return (roomService.updateRoom(roomDto, id));
+    public Room updateRoom(Room room, Integer id) {
+        return (roomService.updateRoom(room, id));
     }
 
     @DELETE
-    public Boolean deleteRoom(RoomDto roomDto, Integer id) {
-        return (roomService.deleteRoom(roomDto, id));
+    public Boolean deleteRoom(Room room, Integer id) {
+        return (roomService.deleteRoom(room, id));
     }
 }

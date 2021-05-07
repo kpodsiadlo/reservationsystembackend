@@ -29,13 +29,13 @@ public class UserController {
     UserService userService;
 
     @POST
-    public UserDto createUser(UserDto userDto) {
-        return (userService.createUser(userDto));
+    public User createUser(User user) {
+        return (userService.createUser(user));
     }
 
     @GET
     @Path("/{id}")
-    public User readUser(@PathParam("id") Integer id) {
+    public UserDto readUser(@PathParam("id") Integer id) {
         return (userService.readUser(id));
     }
 
@@ -46,12 +46,12 @@ public class UserController {
     }
 
     @PUT
-    public UserDto updateUser(UserDto userDto, Integer id) {
-        return (userService.updateUser(userDto, id));
+    public User updateUser(User user, Integer id) {
+        return (userService.updateUser(user, id));
     }
 
     @DELETE
-    public Boolean deleteUser(UserDto userDto, Integer id) {
-        return (userService.deleteUser(userDto, id));
+    public Boolean deleteUser(User user, Integer id) {
+        return (userService.deleteUser(user, id));
     }
 }
