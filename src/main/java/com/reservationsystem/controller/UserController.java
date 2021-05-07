@@ -8,7 +8,6 @@ import com.reservationsystem.service.UserService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,7 +19,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Transactional
 @RequestScoped
 @Path("/user")
 @Consumes(MediaType.APPLICATION_JSON)

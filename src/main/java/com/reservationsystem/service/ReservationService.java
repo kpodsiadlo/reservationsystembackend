@@ -13,9 +13,10 @@ import com.reservationsystem.mapper.ReservationMapper;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Transactional
 @RequestScoped
 public class ReservationService {
     @Inject

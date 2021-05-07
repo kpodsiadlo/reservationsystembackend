@@ -8,9 +8,10 @@ import com.reservationsystem.mapper.RoomMapper;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Transactional
 @RequestScoped
 public class RoomService {
     @Inject

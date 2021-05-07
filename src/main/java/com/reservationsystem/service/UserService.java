@@ -18,30 +18,25 @@ public class UserService {
     @Inject
     UserDao userDao;
 
-    @Transactional
     public User createUser(User user) {
         return userDao.create(user);
     }
 
-    @Transactional
     public UserDto readUser(Integer id) {
         return UserMapper.toUserDto(userDao.read(id));
 
     }
 
-    @Transactional
     public UserDto updateUser(User user, Integer id) {
         return UserMapper.toUserDto(userDao.update(user, id));
 
     }
 
-    @Transactional
     public Boolean deleteUser(Integer id) {
         return userDao.delete(id);
 
     }
 
-    @Transactional
     public List<UserDto> getAll() {
         return userDao.findAll()
                 .stream()

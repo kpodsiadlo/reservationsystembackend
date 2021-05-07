@@ -1,13 +1,12 @@
 package com.reservationsystem.controller;
 
-import com.reservationsystem.entity.Room;
 import com.reservationsystem.dto.RoomDto;
 import com.reservationsystem.dto.RoomWithReservationsDto;
+import com.reservationsystem.entity.Room;
 import com.reservationsystem.service.RoomService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,7 +18,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Transactional
 @RequestScoped
 @Path("/room")
 @Consumes(MediaType.APPLICATION_JSON)
