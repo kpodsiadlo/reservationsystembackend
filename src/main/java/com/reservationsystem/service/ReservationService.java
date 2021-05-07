@@ -27,21 +27,25 @@ public class ReservationService {
 
     public ReservationWithRoomDto createReservation(IncomingReservationDto incomingReservationDto) {
         User user = userDao.readEntity(incomingReservationDto.getUserId());
-        Room room = roomDao.read(incomingReservationDto.getRoomId());
+        Room room = roomDao.readEntity(incomingReservationDto.getRoomId());
         Reservation reservation = ReservationMapper.toReservation(
                 incomingReservationDto, user, room);
         return ReservationMapper.toReservationWithRoomDto(reservationDao.create(reservation));
     }
 
-    public ReservationDto readReservation(Integer id) {
-        return ReservationMapper.toReservationDto(
-                reservationDao.read(id));
+    public ReservationWithRoomDto readReservation(Integer id) {
+        return ReservationMapper.toReservationWithRoomDto(
+                reservationDao.readReservationWithRoom(id));
 
     }
 
-    public ReservationWithRoomDto updateReservation(Reservation reservation, Integer id) {
-        return (ReservationMapper.toReservationWithRoomDto(reservationDao.update(reservation,
-                id)));
+    public ReservationWithRoomDto updateReservation(IncomingReservationDto incomingReservationDto, Integer id) {
+        Room room = roomDao.readEntity(incomingReservationDto.getRoomId());
+        User user = userDao.readEntity(incomingReservationDto.getUserId());
+        Reservation reservation = ReservationMapper.toReservation(
+                incomingReservationDto, user, room);
+        return (ReservationMapper.toReservationWithRoomDto(
+                reservationDao.update(reservation, id)));
 
     }
 

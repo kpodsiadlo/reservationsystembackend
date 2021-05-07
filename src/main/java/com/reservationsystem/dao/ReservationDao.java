@@ -18,7 +18,7 @@ public class ReservationDao {
         return reservation;
     }
 
-    public Reservation read(Integer id) {
+    public Reservation readReservationWithRoom(Integer id) {
         Query query = entityManager.createQuery("Select R from Reservation R " +
                 "JOIN FETCH R.room room WHERE r.id = :id");
         query.setParameter("id", id);
@@ -30,7 +30,6 @@ public class ReservationDao {
         reservationToChange.setRoom(reservation.getRoom());
         reservationToChange.setReservationStart(reservation.getReservationStart());
         reservationToChange.setReservationEnd(reservation.getReservationStart());
-        reservationToChange.setUser(reservation.getUser());
         return reservationToChange;
     }
 

@@ -31,7 +31,7 @@ public class ReservationController {
 
     @GET
     @Path("/{id}")
-    public ReservationDto readReservation(@PathParam("id") Integer id) {
+    public ReservationWithRoomDto readReservation(@PathParam("id") Integer id) {
         return (reservationService.readReservation(id));
     }
 
@@ -42,9 +42,9 @@ public class ReservationController {
 
     @PUT
     @Path("/{id}")
-    public ReservationWithRoomDto updateReservation(Reservation reservation,
+    public ReservationWithRoomDto updateReservation(IncomingReservationDto incomingReservationDto,
                                                     @PathParam("id") Integer id) {
-        return (reservationService.updateReservation(reservation, id));
+        return (reservationService.updateReservation(incomingReservationDto, id));
     }
 
     @DELETE

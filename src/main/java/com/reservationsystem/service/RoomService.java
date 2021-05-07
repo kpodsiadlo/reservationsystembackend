@@ -22,7 +22,7 @@ public class RoomService {
 
     public RoomDto readRoom(Integer id) {
         return RoomMapper.toRoomDto(
-                roomDao.read(id));
+                roomDao.readEntity(id));
 
     }
 

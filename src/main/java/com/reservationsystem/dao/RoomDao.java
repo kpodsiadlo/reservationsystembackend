@@ -18,7 +18,7 @@ public class RoomDao {
         return room;
     }
 
-    public Room read(Integer id) {
+    public Room readEntity(Integer id) {
         Room room = entityManager.find(Room.class, id);
         return room;
     }
@@ -32,7 +32,8 @@ public class RoomDao {
 
     public Room update(Room room, Integer id) {
         Room roomToChange = entityManager.find(Room.class, id);
-        roomToChange.setReservations(roomToChange.getReservations());
+        roomToChange.setRoomNumber(room.getRoomNumber());
+        roomToChange.setDescription(room.getDescription());
         return roomToChange;
     }
 
