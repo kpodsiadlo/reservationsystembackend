@@ -47,17 +47,19 @@ public class RoomController {
     }
 
     @POST
-    public Room createRoom(Room room) {
+    public RoomDto createRoom(Room room) {
         return (roomService.createRoom(room));
     }
 
     @PUT
-    public Room updateRoom(Room room, Integer id) {
+    @Path("/{id}")
+    public RoomDto updateRoom(Room room, @PathParam("id") Integer id) {
         return (roomService.updateRoom(room, id));
     }
 
     @DELETE
-    public Boolean deleteRoom(Room room, Integer id) {
-        return (roomService.deleteRoom(room, id));
+    @Path("/{id}")
+    public Boolean deleteRoom(@PathParam("id") Integer id) {
+        return (roomService.deleteRoom(id));
     }
 }

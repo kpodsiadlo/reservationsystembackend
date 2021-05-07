@@ -39,13 +39,14 @@ public class ReservationService {
 
     }
 
-    public Reservation updateReservation(Reservation reservation, Integer id) {
-        return (reservationDao.update(reservation, id));
+    public ReservationWithRoomDto updateReservation(Reservation reservation, Integer id) {
+        return (ReservationMapper.toReservationWithRoomDto(reservationDao.update(reservation,
+                id)));
 
     }
 
-    public Boolean deleteReservation(Reservation reservation, Integer id) {
-        return reservationDao.delete(reservation, id);
+    public Boolean deleteReservation(Integer id) {
+        return reservationDao.delete(id);
 
     }
 

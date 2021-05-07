@@ -18,11 +18,6 @@ public class ReservationDao {
         return reservation;
     }
 
-//    public Reservation read(Integer id) {
-//        Reservation reservation = entityManager.find(Reservation.class, id);
-//        return reservation;
-//    }
-
     public Reservation read(Integer id) {
         Query query = entityManager.createQuery("Select R from Reservation R " +
                 "JOIN FETCH R.room room WHERE r.id = :id");
@@ -39,7 +34,7 @@ public class ReservationDao {
         return reservationToChange;
     }
 
-    public Boolean delete(Reservation reservation, Integer id) {
+    public Boolean delete(Integer id) {
         Reservation reservationToDelete = entityManager.find(Reservation.class, id);
         entityManager.remove(reservationToDelete);
         return Boolean.TRUE;

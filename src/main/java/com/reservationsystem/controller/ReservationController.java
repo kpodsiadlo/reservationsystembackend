@@ -4,7 +4,6 @@ import com.reservationsystem.dto.IncomingReservationDto;
 import com.reservationsystem.dto.ReservationDto;
 import com.reservationsystem.dto.ReservationWithRoomDto;
 import com.reservationsystem.entity.Reservation;
-import com.reservationsystem.mapper.ReservationMapper;
 import com.reservationsystem.service.ReservationService;
 
 import javax.enterprise.context.RequestScoped;
@@ -42,12 +41,15 @@ public class ReservationController {
     }
 
     @PUT
-    public Reservation updateReservation(Reservation reservation, Integer id) {
+    @Path("/{id}")
+    public ReservationWithRoomDto updateReservation(Reservation reservation,
+                                                    @PathParam("id") Integer id) {
         return (reservationService.updateReservation(reservation, id));
     }
 
     @DELETE
-    public Boolean deleteReservation(Reservation reservation, Integer id) {
-        return (reservationService.deleteReservation(reservation, id));
+    @Path("/{id}")
+    public Boolean deleteReservation(@PathParam("id") Integer id) {
+        return (reservationService.deleteReservation( id));
     }
 }

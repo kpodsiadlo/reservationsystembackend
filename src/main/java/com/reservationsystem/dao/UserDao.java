@@ -35,9 +35,9 @@ public class UserDao {
     }
 
 
-    public UserDto read(Integer id){
+    public User read(Integer id){
         User user = entityManager.find(User.class, id);
-        return UserMapper.toUserDto(user);
+        return (user);
     }
 
     public User readEntity(Integer id){
@@ -53,7 +53,7 @@ public class UserDao {
         return userToChange;
     }
 
-    public Boolean delete(User user, Integer id) {
+    public Boolean delete(Integer id) {
         User userToDelete = entityManager.find(User.class, id);
         entityManager.remove(userToDelete);
         return Boolean.TRUE;

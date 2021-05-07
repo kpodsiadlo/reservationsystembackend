@@ -36,7 +36,7 @@ public class RoomDao {
         return roomToChange;
     }
 
-    public Boolean delete(Room room, Integer id) {
+    public Boolean delete(Integer id) {
         Room roomToDelete = entityManager.find(Room.class, id);
         entityManager.remove(roomToDelete);
         return Boolean.TRUE;

@@ -1,7 +1,6 @@
 package com.reservationsystem.mapper;
 
 import com.reservationsystem.dto.ReservationUserDto;
-import com.reservationsystem.dto.ReservationWithRoomDto;
 import com.reservationsystem.dto.RoomDto;
 import com.reservationsystem.dto.RoomReservationDto;
 import com.reservationsystem.dto.RoomWithReservationsDto;

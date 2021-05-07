@@ -1,6 +1,5 @@
 package com.reservationsystem.dto;
 
-import com.reservationsystem.entity.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -3,6 +3,7 @@ package com.reservationsystem.controller;
 import com.reservationsystem.dto.UserDto;
 import com.reservationsystem.dto.UserWithReservationsDto;
 import com.reservationsystem.entity.User;
+import com.reservationsystem.mapper.UserMapper;
 import com.reservationsystem.service.UserService;
 
 import javax.enterprise.context.RequestScoped;
@@ -17,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Transactional
 @RequestScoped
@@ -29,8 +31,8 @@ public class UserController {
     UserService userService;
 
     @POST
-    public User createUser(User user) {
-        return (userService.createUser(user));
+    public UserDto createUser(User user) {
+        return UserMapper.toUserDto(userService.createUser(user));
     }
 
     @GET
@@ -40,18 +42,25 @@ public class UserController {
     }
 
     @GET
-    @Path("withreservations/{id}")
+    @Path("full/{id}")
     public UserWithReservationsDto readUserWithReservations(@PathParam("id") Integer id) {
         return (userService.readUserWithReservations(id));
     }
 
+    @GET
+    public List<UserDto> getAll() {
+        return userService.getAll();
+    }
+
     @PUT
-    public User updateUser(User user, Integer id) {
+    @Path("/{id}")
+    public UserDto updateUser(User user, @PathParam("id") Integer id) {
         return (userService.updateUser(user, id));
     }
 
     @DELETE
-    public Boolean deleteUser(User user, Integer id) {
-        return (userService.deleteUser(user, id));
+    @Path("/{id}")
+    public Boolean deleteUser(@PathParam("id") Integer id) {
+        return (userService.deleteUser(id));
     }
 }

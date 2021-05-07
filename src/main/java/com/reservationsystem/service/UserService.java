@@ -25,19 +25,19 @@ public class UserService {
 
     @Transactional
     public UserDto readUser(Integer id) {
-        return userDao.read(id);
+        return UserMapper.toUserDto(userDao.read(id));
 
     }
 
     @Transactional
-    public User updateUser(User user, Integer id) {
-        return userDao.update(user, id);
+    public UserDto updateUser(User user, Integer id) {
+        return UserMapper.toUserDto(userDao.update(user, id));
 
     }
 
     @Transactional
-    public Boolean deleteUser(User user, Integer id) {
-        return userDao.delete(user, id);
+    public Boolean deleteUser(Integer id) {
+        return userDao.delete(id);
 
     }
 

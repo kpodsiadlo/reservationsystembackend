@@ -16,8 +16,8 @@ public class RoomService {
     @Inject
     RoomDao roomDao;
 
-    public Room createRoom(Room room) {
-        return roomDao.create(room);
+    public RoomDto createRoom(Room room) {
+        return RoomMapper.toRoomDto(roomDao.create(room));
     }
 
     public RoomDto readRoom(Integer id) {
@@ -37,13 +37,13 @@ public class RoomService {
                 .collect(Collectors.toList());
     }
 
-    public Room updateRoom(Room room, Integer id) {
-        return roomDao.update(room,id);
+    public RoomDto updateRoom(Room room, Integer id) {
+        return RoomMapper.toRoomDto(roomDao.update(room,id));
 
     }
 
-    public Boolean deleteRoom(Room room, Integer id) {
-        return roomDao.delete(room,id);
+    public Boolean deleteRoom(Integer id) {
+        return roomDao.delete(id);
 
     }
 }
