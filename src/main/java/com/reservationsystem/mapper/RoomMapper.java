@@ -1,12 +1,11 @@
 package com.reservationsystem.mapper;
 
-import com.reservationsystem.dto.ReservationUserDto;
+import com.reservationsystem.dto.ReservationDto;
 import com.reservationsystem.dto.RoomDto;
-import com.reservationsystem.dto.RoomReservationDto;
+import com.reservationsystem.dto.ReservationWithUserDto;
 import com.reservationsystem.dto.RoomWithReservationsDto;
 import com.reservationsystem.entity.Reservation;
 import com.reservationsystem.entity.Room;
-import com.reservationsystem.entity.User;
 
 import javax.ejb.Stateless;
 import java.util.ArrayList;
@@ -25,28 +24,19 @@ public class RoomMapper {
         roomWithReservationsDto.setDescription(room.getDescription());
         roomWithReservationsDto.setRoomNumber(room.getRoomNumber());
 
-        List<RoomReservationDto> reservationDtos = new ArrayList<>();
+        List<ReservationWithUserDto> reservationWithUserDtos = new ArrayList<>();
 
         for (Reservation reservation : room.getReservations()) {
-            RoomReservationDto roomReservationDto = new RoomReservationDto();
-            roomReservationDto.setId(reservation.getId());
-            roomReservationDto.setReservationStart(reservation.getReservationStart());
-            roomReservationDto.setReservationEnd(reservation.getReservationEnd());
-            roomReservationDto.setUser(RoomMapper.toRoomReservationUserDto(reservation.getUser()));
-            reservationDtos.add(roomReservationDto);
+            ReservationWithUserDto reservationWithUserDto = new ReservationWithUserDto();
+            reservationWithUserDto.setId(reservation.getId());
+            reservationWithUserDto.setReservationStart(reservation.getReservationStart());
+            reservationWithUserDto.setReservationEnd(reservation.getReservationEnd());
+            reservationWithUserDto.setUser(UserMapper.toUserDto(reservation.getUser()));
+            reservationWithUserDtos.add(reservationWithUserDto);
         }
 
-        roomWithReservationsDto.setReservations(reservationDtos);
+        roomWithReservationsDto.setReservations(reservationWithUserDtos);
         return roomWithReservationsDto;
     }
 
-
-
-    public static ReservationUserDto toRoomReservationUserDto(User user) {
-        ReservationUserDto reservationUserDto = new ReservationUserDto();
-        reservationUserDto.setId(user.getId());
-        reservationUserDto.setFirstName(user.getFirstName());
-        reservationUserDto.setLastName(user.getLastName());
-        return reservationUserDto;
-    }
 }
